@@ -11,6 +11,13 @@
   </head>
   <body>
     Форма Регистрации
+
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ user_form }}
+        {{ restaurant_form }}
+        <button type="submit">Зарегистрироваться</button>
+    </form>
     <a href="{% url 'sign_out' %}">Выйти из профиля</a>
   </body>
 </html>
