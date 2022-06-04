@@ -12,7 +12,7 @@
   <body>
     Форма Регистрации
 
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ user_form }}
         {{ restaurant_form }}
