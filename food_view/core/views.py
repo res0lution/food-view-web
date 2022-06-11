@@ -1,7 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import login
 
 from core.forms import UserForm
 from restaurant.forms import RestaurantForm
@@ -28,7 +28,7 @@ def sign_up(request):
 
             login(request, new_user, backend='django.contrib.auth.backends.ModelBackend')
 
-            return redirect(request, 'home.html', {})
+            return render(request, 'home.html', {})
 
     return render(request, 'sign_up.html', {
         "user_form": user_form,
