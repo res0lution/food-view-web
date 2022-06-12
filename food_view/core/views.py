@@ -34,3 +34,7 @@ def sign_up(request):
         "user_form": user_form,
         "restaurant_form": restaurant_form
     })
+
+@login_required(login_url='/account/sign_in')
+def account(request):
+    return render(request, 'account.html', {})
