@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block sidebar %} 
+    Привет {{ request.user.first_name }}
+    <hr>
+
+    <a href="{% url 'account' %} ">Аккаунт</a>
+
+    <a href="{% url 'meal' %} ">Еда</a>
+
+    <a href="{% url 'order' %} ">Заказы</a>
+
+    <a href="{% url 'report' %} ">Отчеты</a>
+
+    <a href="{% url 'sign_out' %} ">Выйти из профиля</a>
+    <hr>
+{% endblock sidebar %}
