@@ -10,7 +10,7 @@ from restaurant.forms import RestaurantForm
 
 @login_required(login_url='/account/sign_in')
 def home(request):
-    return render(request, 'home.html', {})
+    return render(request, 'order.html', {})
 
 def sign_up(request):
     user_form = UserForm()
@@ -28,7 +28,7 @@ def sign_up(request):
 
             login(request, new_user, backend='django.contrib.auth.backends.ModelBackend')
 
-            return render(request, 'home.html', {})
+            return render(request, 'order.html', {})
 
     return render(request, 'sign_up.html', {
         "user_form": user_form,

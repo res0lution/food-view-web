@@ -9,24 +9,23 @@
     <title>Food View | {% block title %}{% endblock title %}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
   </head>
 
-  <body>
+  <body class="bg-gradient">
 
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-2 sidebar">
-          {% block sidebar %}
-          {% endblock sidebar %}
-        </div>
+    <div class="container">
+      <br><br><br>
 
-        <div class="col-md-10 offset-md-2 content">
-          {% block body %}{% endblock body %}
+      <div class="row justify-content-center">
+        <div class="jumbotron">
+          <h3 class="display-6 text-center">
+            {% block heading %}{% endblock heading %}
+          </h3>
+          <br>
+
+          {% block content %}{% endblock content %}
         </div>
       </div>
     </div>

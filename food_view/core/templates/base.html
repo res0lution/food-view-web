@@ -1,17 +1,29 @@
 {% extends 'layout.html' %}
 
 {% block sidebar %} 
-    Привет {{ request.user.first_name }}
-    <hr>
+  <div class="text-center mt-4">
+    <img 
+      src="{{ request.user.restaurant.logo.url }}" 
+      class="rounded-circle" 
+      height="80"
+      width="80"
+      alt="Restaurant Logo"
+    />
+    <br><br>
+    <h5>{{ request.user.get_full_name }}</h5>
+    <h6>{{ request.user.restaurant.name }}</h6>
+  </div>
 
-    <a href="{% url 'account' %} ">Аккаунт</a>
+  <hr>
 
-    <a href="{% url 'meal' %} ">Еда</a>
+  <a href="{% url 'account' %} ">Аккаунт</a>
 
-    <a href="{% url 'order' %} ">Заказы</a>
+  <a href="{% url 'meal' %} ">Еда</a>
 
-    <a href="{% url 'report' %} ">Отчеты</a>
+  <a href="{% url 'order' %} ">Заказы</a>
 
-    <a href="{% url 'sign_out' %} ">Выйти из профиля</a>
-    <hr>
+  <a href="{% url 'report' %} ">Отчеты</a>
+
+  <a href="{% url 'sign_out' %} ">Выйти из профиля</a>
+  <hr>
 {% endblock sidebar %}
