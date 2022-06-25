@@ -40,7 +40,7 @@ def account(request):
 
     if request.method == 'POST':
         account_form = AccountForm(request.POST, instance=request.user)
-        restaurant_form = RestaurantForm(request.POST, instance=request.user.restaurant)
+        restaurant_form = RestaurantForm(request.POST, request.FILES, instance=request.user.restaurant)
 
         if account_form.is_valid() and restaurant_form.is_valid():
             account_form.save()

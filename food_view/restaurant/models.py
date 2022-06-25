@@ -12,3 +12,13 @@ class Restaurant(models.Model):
 
     def __str__(self):
         return self.name
+
+class Meal(models.Model):
+    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, related_name="restaurant")
+    name = models.CharField(max_length=255)
+    short_description = models.TextField(max_length=500)
+    image = CloudinaryField('image')
+    price = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.name
