@@ -16,14 +16,26 @@
 
   <hr>
 
-  <a href="{% url 'account' %} ">Аккаунт</a>
+  <div class="list-group">
+    <span class="text-uppercase">
+      Dashboard
+    </span>
 
-  <a href="{% url 'meal' %} ">Еда</a>
+    <a href="{% url 'meal' %}" class="list-group-item">Еда</a>
 
-  <a href="{% url 'order' %} ">Заказы</a>
+    <a href="{% url 'order' %}" class="list-group-item">Заказы</a>
 
-  <a href="{% url 'report' %} ">Отчеты</a>
+    <a href="{% url 'report' %}" class="list-group-item">Отчеты</a>
 
-  <a href="{% url 'sign_out' %} ">Выйти из профиля</a>
+    <span class="text-uppercase text-center">
+      Profile
+    </span>
+
+    <a href="{% url 'account' %}" class="list-group-item">Аккаунт</a>
+  </div>
+
+  <div class="text-center my-3 mx-3">
+    <a href="{% url 'sign_out' %}" class="btn btn-warning btn-block" >Выйти из профиля</a>
+  </div>
   <hr>
 {% endblock sidebar %}

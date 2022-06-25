@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import login
 
-from core.forms import UserForm
+from core.forms import UserForm, AccountForm
 from restaurant.forms import RestaurantForm
 
 # Create your views here.
@@ -37,4 +37,19 @@ def sign_up(request):
 
 @login_required(login_url='/account/sign_in')
 def account(request):
-    return render(request, 'account.html', {})
+
+    if request.method == 'POST':
+        account_form = AccountForm(request.POST, instance=request.user)
+        restaurant_form = RestaurantForm(request.POST, instance=request.user.restaurant)
+
+        if account_form.is_valid() and restaurant_form.is_valid():
+            account_form.save()
+            restaurant_form.save()
+
+    account_form = AccountForm(instance=request.user)
+    restaurant_form = RestaurantForm(instance=request.user.restaurant)
+
+    return render(request, 'account.html', {
+        "account_form": account_form,
+        "restaurant_form": restaurant_form
+    })
