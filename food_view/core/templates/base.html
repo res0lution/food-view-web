@@ -18,20 +18,20 @@
 
   <div class="list-group">
     <span class="text-uppercase">
-      Dashboard
+      Dashboard {{request.pathname}}
     </span>
 
-    <a href="{% url 'meal' %}" class="list-group-item">Еда</a>
+    <a href="{% url 'meal' %}" class="list-group-item {% if request.path == '/restaurant/meal' %} active {% endif %}">Еда</a>
 
-    <a href="{% url 'order' %}" class="list-group-item">Заказы</a>
+    <a href="{% url 'order' %}" class="list-group-item {% if request.path == '/restaurant/order' %} active {% endif %}">Заказы</a>
 
-    <a href="{% url 'report' %}" class="list-group-item">Отчеты</a>
+    <a href="{% url 'report' %}" class="list-group-item {% if request.path == '/restaurant/report' %} active {% endif %}">Отчеты</a>
 
-    <span class="text-uppercase text-center">
+    <span class="text-uppercase">
       Profile
     </span>
 
-    <a href="{% url 'account' %}" class="list-group-item">Аккаунт</a>
+    <a href="{% url 'account' %}" class="list-group-item {% if request.path == '/account' %} active {% endif %}">Аккаунт</a>
   </div>
 
   <div class="text-center my-3 mx-3">

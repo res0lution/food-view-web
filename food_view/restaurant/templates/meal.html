@@ -19,10 +19,10 @@
             <thead>
               <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Description</th>
-                <th scope="col">Price</th>
-                <th scope="col">Image</th>
+                <th scope="col">Имя</th>
+                <th scope="col">Описание</th>
+                <th scope="col">Цена</th>
+                <th scope="col">Изображение</th>
               </tr>
             <thead>
 
@@ -39,7 +39,7 @@
                   <td class="text-right">${{ meal.price }}</td>
                   <td class="text-center">
                     <img 
-                      src="{{ MEDIA_URL }}{{ meal.image.url }}"
+                      src="{{ meal.image.url }}"
                       class="rounded"
                       width="50"
                       height="50"
