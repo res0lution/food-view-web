@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from restaurant import apis as restaurant_apis
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('core.urls')),
@@ -23,4 +25,9 @@ urlpatterns = [
     path('restaurant/', include('order.urls')),
 
     path('api/socials/', include('rest_framework_social_oauth2.urls')),
+
+    path('api/customer/restaurants/', restaurant_apis.customer_get_restaurants),
+    path('api/customer/meals/<int:restaurant_id>', restaurant_apis.customer_get_meals),
+    path('api/customer/order/add', restaurant_apis.customer_get_restaurants),
+    path('api/customer/order/latest', restaurant_apis.customer_get_meals),
 ]
