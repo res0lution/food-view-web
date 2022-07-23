@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 from restaurant import apis as restaurant_apis
+from order import apis as order_apis
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,9 +26,10 @@ urlpatterns = [
     path('restaurant/', include('order.urls')),
 
     path('api/socials/', include('rest_framework_social_oauth2.urls')),
+    path('api/restaurant/order/notification/<last_request_time>/', order_apis.order_notification),
 
     path('api/customer/restaurants/', restaurant_apis.customer_get_restaurants),
     path('api/customer/meals/<int:restaurant_id>', restaurant_apis.customer_get_meals),
-    path('api/customer/order/add', restaurant_apis.customer_get_restaurants),
-    path('api/customer/order/latest', restaurant_apis.customer_get_meals),
+    path('api/customer/order/add', order_apis.customer_add_order),
+    path('api/customer/order/latest', order_apis.customer_get_latest_order),
 ]

@@ -1,5 +1,26 @@
 {% extends 'layout.html' %}
 
+{% block script %}
+  <script type="text/javascript" >
+    $(document).ready(() => {
+      const now = new Date();
+  
+      setInterval(() => $.ajax({
+        url: '/api/restaurant/order/notification/' + now.toISOString() + '/',
+        method: 'GET',
+        success: function (data) {
+          if (data.notification === 0) {
+            $('.badge').text('')
+          } else {
+            $('.badge').text(data.notification)
+          }
+        }
+      }), 3000)
+    })
+  </script>
+{% endblock script %}
+
+
 {% block sidebar %} 
   <div class="text-center mt-4">
     <img 
@@ -21,7 +42,10 @@
       Dashboard {{request.pathname}}
     </span>
 
-    <a href="{% url 'meal' %}" class="list-group-item {% if request.path == '/restaurant/meal' %} active {% endif %}">Еда</a>
+    <a href="{% url 'meal' %}" class="list-group-item {% if request.path == '/restaurant/meal' %} active {% endif %}">
+      Еда
+      <span class="badge badge-warning ml-2"></span>
+    </a>
 
     <a href="{% url 'order' %}" class="list-group-item {% if request.path == '/restaurant/order' %} active {% endif %}">Заказы</a>
 
