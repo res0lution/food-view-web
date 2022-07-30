@@ -7,6 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 from .models import Order, OrderDetails
 from restaurant.models import Meal
+from .serializers import OrderSerializer, OrderStatusSerializer
 
 @csrf_exempt
 def customer_add_order(request):
@@ -67,7 +68,43 @@ def customer_add_order(request):
     return JsonResponse({})
 
 def customer_get_latest_order(request):
-    return JsonResponse({})
+    """
+        params:
+        access_token
+        return:
+            data witl all details about order
+    """
+    access_token = AccessToken.objects.get(
+        token=request.GET.get('access_token'), 
+        expires__gt = timezone.now()
+    )
+    customer = access_token.user.customer
+
+    order = OrderSerializer(
+        Order.objects.filter(customer=customer).last()
+    ).data
+
+    return JsonResponse({ "last": order })
+
+
+def customer_get_latest_order_status(request):
+    """
+        params:
+        access_token
+        return:
+            data witl all details about order
+    """
+    access_token = AccessToken.objects.get(
+        token=request.GET.get('access_token'), 
+        expires__gt = timezone.now()
+    )
+    customer = access_token.user.customer
+
+    order_status = OrderStatusSerializer(
+        Order.objects.filter(customer=customer).last()
+    ).data
+
+    return JsonResponse({ "last_order_status": order_status })
 
 def order_notification(request, last_request_time):
     notification = Order.objects.filter(
@@ -76,3 +113,19 @@ def order_notification(request, last_request_time):
     ).count()
 
     return JsonResponse({"notification": notification})
+
+
+def driver_get_ready_orders(request):
+    return JsonResponse({})
+
+def driver_pick_order(request):
+    return JsonResponse({})
+
+def driver_get_latest_order(request):
+    return JsonResponse({})
+
+def driver_complete_order(request):
+    return JsonResponse({})
+
+def driver_get_revenue(request):
+    return JsonResponse({})

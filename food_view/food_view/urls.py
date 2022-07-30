@@ -32,4 +32,11 @@ urlpatterns = [
     path('api/customer/meals/<int:restaurant_id>', restaurant_apis.customer_get_meals),
     path('api/customer/order/add', order_apis.customer_add_order),
     path('api/customer/order/latest', order_apis.customer_get_latest_order),
+    path('api/customer/order/latest_status', order_apis.customer_get_latest_order_status),
+
+    path('api/driver/order/ready', order_apis.driver_get_ready_orders),
+    path('api/driver/order/pick', order_apis.driver_pick_order),
+    path('api/driver/order/latest', order_apis.driver_get_latest_order),
+    path('api/driver/order/complete', order_apis.driver_complete_order),
+    path('api/driver/revenue/', order_apis.driver_get_revenue),
 ]
